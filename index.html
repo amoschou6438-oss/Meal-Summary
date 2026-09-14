@@ -1797,6 +1797,16 @@ document.getElementById('restoreFileInput').addEventListener('change', handleRes
 
   updateStats();
   showLanding();
+
+  // 支援備份控制台的批次流程：透過網址參數自動觸發備份／恢復
+  const __params = new URLSearchParams(location.search);
+  if(__params.get('autobackup') === '1'){
+    backupEntries();
+    setTimeout(()=>{ try{ window.close(); }catch(e){} }, 800);
+  }
+  if(__params.get('autorestore') === '1'){
+    triggerRestore();
+  }
 })();
 </script>
 </body>
