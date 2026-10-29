@@ -905,7 +905,7 @@ const QTY_PLACEHOLDERS = {
 };
 const VEG_OPTIONS = ['全素','奶素','蛋素','蛋奶素'];
 const NO_VEG_CATS = ['水果類','飲品類'];
-const AREA_OPTIONS = ['台中區','彰化區','太平區','坪林區','嘉義區','斗六區','馬光區','苗栗區'];
+const AREA_OPTIONS = ['台中區','彰化區','太平區','坪林區','嘉義區','斗六區','馬光區','苗栗區','北區'];
 const MAIN_ITEMS = [
   {key:'enter', title:'進入供餐系統', desc:'選擇區單位並登記餐點', emoji:'🍱', color:'#3B5B3E'},
   {key:'summary', title:'查看本區餐點清單', desc:'瀏覽目前已登記的所有項目', emoji:'📋', color:'#2C6E7A'},
@@ -926,9 +926,13 @@ const AREA_TRIGRAMS = [
   [0,1,1], // 巽
   [0,1,0], // 坎
   [0,0,1], // 艮
-  [0,0,0]  // 坤
+  [0,0,0], // 坤
+  'taiji'  // 第九區（北區）：太極圖示
 ];
 function trigramIconSVG(bits){
+  if(bits === 'taiji'){
+    return `<svg viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg" fill="none"><circle cx="18" cy="18" r="13" stroke="currentColor" stroke-width="2.4"/><path d="M18 5a13 13 0 0 1 0 26a6.5 6.5 0 0 1 0-13a6.5 6.5 0 0 0 0-13z" fill="currentColor"/><circle cx="18" cy="11.5" r="2" fill="#fff"/><circle cx="18" cy="24.5" r="2" fill="currentColor"/></svg>`;
+  }
   const rows = [bits[2], bits[1], bits[0]]; // top to bottom
   const ys = [9, 18, 27];
   let lines = '';
@@ -951,7 +955,8 @@ const AREA_COLORS = {
   '嘉義區': '#7A5A46',
   '斗六區': '#8B9C4E',
   '馬光區': '#B0577A',
-  '苗栗區': '#5C6B57'
+  '苗栗區': '#5C6B57',
+  '北區': '#4A5F8C'
 };
 const CATEGORY_EMOJI = {
   '米飯類': '🍚',
